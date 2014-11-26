@@ -1,0 +1,13 @@
+NAME="pasystray"
+VERSION=0.4.0
+RELEASE=1
+CATEGORY="Audio"
+SUMMARY="PulseAudio system tray"
+DESCRIPTION="Pasystray allows setting the default PulseAudio source/sink and
+moving streams on the fly between sources/sinks without restarting the client
+applications."
+HOMEPAGE="https://github.com/christophgysin/pasystray/"
+SRC_URI="https://github.com/christophgysin/pasystray/archive/${VERSION}/pasystray-${VERSION}.tar.gz"
+
+# launched from menu
+REQUIRES="paman paprefs pavucontrol pavumeter"
