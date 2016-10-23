@@ -1,6 +1,6 @@
 NAME="pasystray"
 VERSION=0.6.0
-RELEASE=1
+RELEASE=2
 CATEGORY="Audio"
 SUMMARY="PulseAudio system tray"
 DESCRIPTION="Pasystray allows setting the default PulseAudio source/sink and
@@ -12,3 +12,13 @@ SRC_DIR="pasystray-pasystray-${VERSION}"
 
 # launched from menu
 REQUIRES="paman paprefs pavucontrol pavumeter"
+
+src_install() {
+	cd ${B}
+	cyginstall
+
+	check_prog_req desktop-file-edit desktop-file-utils
+	# do not autostart on desktops with their own PulseAudio mixers
+	desktop-file-edit --add-not-show-in="Cinnamon;GNOME;LXQt;KDE;MATE;TDE;XFCE" \
+		${D}/etc/xdg/autostart/${NAME}.desktop
+}
